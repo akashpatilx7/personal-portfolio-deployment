@@ -1,0 +1,61 @@
+import { Github, Linkedin, Mail, MapPin, Twitter } from 'lucide-react';
+
+export const contactSectionData = {
+  title: 'Contact Me',
+  video: 'https://cdn.pixabay.com/video/2023/09/11/180078-863401749_large.mp4',
+  detailsTitle: 'Get In Touch With Me',
+  contactInfo: [
+    {
+      Icon: Mail,
+      title: 'Email',
+      value: 'akash.patilx7@gmail.com',
+      link: 'mailto:akash.patilx7@gmail.com',
+    },
+    {
+      Icon: MapPin,
+      title: 'Location',
+      value: 'Pune, India',
+    },
+  ],
+  socialTitle: 'Connect With Me',
+  socialLinks: [
+    {
+      Icon: Linkedin,
+      link: 'https://www.linkedin.com/in/akash-patil-2b9a631ba',
+    },
+    {
+      Icon: Github,
+      link: 'https://github.com/akashpatilx7',
+    },
+  ],
+  form: {
+    title: 'Send Me A Message',
+    fields: [
+      {
+        placeholder: 'Name',
+        name: 'name',
+        type: 'text',
+        required: true,
+        minLength: 3,
+        maxLength: 100,
+      },
+      {
+        placeholder: 'Email',
+        name: 'email',
+        type: 'email',
+        required: true,
+        minLength: 3,
+      },
+      {
+        placeholder: 'Message',
+        name: 'message',
+        type: 'text',
+        required: true,
+        minLength: 3,
+      },
+    ],
+    buttonText: 'Send Message',
+    successMessage: 'Message sent successfully',
+    errorMessage: 'Failed to send message',
+  },
+};
