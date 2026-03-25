@@ -1,0 +1,26 @@
+export const siteMetadata = {
+  title: 'Akash Patil | Cloud & DevOps Engineer',
+  description:
+    'Cloud and DevOps Engineer with 2 years of experience designing, deploying, and maintaining scalable AWS-based infrastructure. Skilled in CI/CD automation, Kubernetes, Terraform, Docker, and cloud infrastructure.',
+  keywords: [
+    'DevOps Engineer',
+    'Cloud Engineer',
+    'AWS Engineer',
+    'Kubernetes Engineer',
+    'CI/CD Engineer',
+    'Infrastructure Engineer',
+    'Terraform',
+    'Docker',
+    'Jenkins',
+    'Ansible',
+    'Prometheus',
+    'Grafana',
+    'AWS',
+    'Cloud Infrastructure',
+    'DevOps',
+    'Site Reliability Engineer',
+  ],
+  author: 'Akash Patil',
+  url: 'https://akashpatil.com',
+  image: '/cover.png',
+};
