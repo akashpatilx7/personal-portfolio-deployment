@@ -100,7 +100,7 @@ export default function ContactSection() {
               Ready to scale your <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#00cfff]'>infrastructure?</span>
             </h2>
             <p className='text-lg md:text-xl text-foreground/60 leading-relaxed max-w-xl'>
-              Let's collaborate to build secure, reliable, and automated systems that drive your business forward.
+              Let&apos;s collaborate to build secure, reliable, and automated systems that drive your business forward.
             </p>
           </div>
           
