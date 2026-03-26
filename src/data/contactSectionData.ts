@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 export const contactSectionData = {
   title: 'Contact Me',
