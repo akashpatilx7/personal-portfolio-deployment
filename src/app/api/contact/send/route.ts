@@ -1,8 +1,7 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
   const reqData = await req.json();
   const { token, name, email, message } = reqData;
   const secretKey: string | undefined = process.env.RECAPTCHA_SECRET_KEY;
