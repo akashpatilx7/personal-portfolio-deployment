@@ -29,16 +29,17 @@ export default function ProjectCard({
   return (
     <div
       className={cn(
-        'group rounded-3xl bg-bg-secondary relative',
+        'group rounded-3xl bg-bg-secondary/80 backdrop-blur-md relative overflow-hidden',
         'flex flex-col',
         'border border-foreground/10',
-        'transition-all duration-300',
-        'hover:border-primary/30'
+        'shadow-md hover:shadow-2xl hover:shadow-primary/5',
+        'transition-all duration-500',
+        'hover:border-primary/40 hover:-translate-y-1.5'
       )}
     >
       {/* Coming Soon Tag */}
       <RenderConditional condition={comingSoon}>
-        <div className='absolute -top-2 -right-2 rounded-full bg-primary text-background px-2 py-1 text-sm z-10'>
+        <div className='absolute -top-2 -right-2 rounded-full bg-primary text-background px-2 py-1 text-sm z-10 font-medium'>
           Coming Soon
         </div>
       </RenderConditional>
@@ -51,14 +52,16 @@ export default function ProjectCard({
           alt='project-image'
           fill
         />
-        <div className='absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300'></div>
+        <div className='absolute inset-0 bg-gradient-to-t from-bg-secondary via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-300'></div>
       </div>
 
       {/* Content */}
-      <div className='flex flex-col p-5 gap-3'>
-        <h3 className='text-xl lg:text-2xl'>{title}</h3>
+      <div className='flex flex-col p-6 md:p-7 gap-3.5 flex-grow justify-between'>
+        <div className='flex flex-col gap-3'>
+          <h3 className='text-xl lg:text-2xl font-bold group-hover:text-primary transition-colors duration-300'>{title}</h3>
 
-        <p className='text-foreground/80'>{description}</p>
+          <p className='text-foreground/80 leading-relaxed'>{description}</p>
+        </div>
 
         {/* Tags */}
         <div className='flex gap-2 flex-wrap mt-4'>

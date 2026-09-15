@@ -6,7 +6,7 @@ import RenderConditional from '@/components/RenderConditional';
 import SectionTitle from '@/components/SectionTitle';
 import { experienceData } from '@/data/experienceData';
 
-export default function SkillsSection() {
+export default function ExperienceSection() {
   return (
     <section
       id='experience'

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { siteMetadata } from '@/data/siteMetadata';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import './globals.css';
 
 const dmSans = DM_Sans({
@@ -23,8 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <head>
+        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
         <link
           rel='icon'
           type='image/png'
@@ -57,7 +59,17 @@ export default function RootLayout({
         </script>
       </head>
 
-      <body className={`${dmSans.variable} antialiased`}>{children}</body>
+      <body
+        className={`${dmSans.variable} bg-background text-foreground antialiased min-h-screen transition-colors duration-300`}
+      >
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='dark'
+          enableSystem={false}
+        >
+          {children}
+        </ThemeProvider>
+      </body>
 
       <Analytics />
     </html>

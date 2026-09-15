@@ -1,3 +1,3 @@
 export default function Divider() {
-  return <div className='h-[1px] bg-[#212121] w-full' />;
+  return <div className='h-[1px] bg-foreground/10 w-full transition-colors duration-300' />;
 }

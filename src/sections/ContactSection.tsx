@@ -59,21 +59,63 @@ export default function ContactSection() {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const token = await executeRecaptcha('contact_form');
+    const name = formData.name || 'Visitor';
+    const email = formData.email || '';
+    const message = formData.message || '';
 
-      const response = await fetch('/api/contact/send', {
-        method: 'POST',
-        body: JSON.stringify({ token, ...formData }),
-      });
-      const data = await response.json();
-      if (data.success) {
-        toast.success(contactSectionData.form.successMessage);
-      } else {
-        toast.error(contactSectionData.form.errorMessage);
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Hi Akash,\n\n${message}\n\n---\nSender Name: ${name}\nSender Email: ${email}`
+    );
+    const mailtoUrl = `mailto:akash.patilx7@gmail.com?subject=${subject}&body=${body}`;
+
+    try {
+      let sentViaApi = false;
+
+      // Attempt server delivery if API keys are configured
+      if (
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY &&
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY !== 'recaptcha-site-key'
+      ) {
+        try {
+          const token = await executeRecaptcha('contact_form');
+          const response = await fetch('/api/contact/send', {
+            method: 'POST',
+            body: JSON.stringify({ token, ...formData }),
+          });
+          const data = await response.json();
+          if (data.success) {
+            sentViaApi = true;
+            toast.success(contactSectionData.form.successMessage);
+          }
+        } catch {
+          sentViaApi = false;
+        }
       }
+
+      if (!sentViaApi) {
+        // Universal standard portfolio delivery: open email client
+        window.location.href = mailtoUrl;
+        toast.success(
+          'Opening your email app to send your message directly to Akash!'
+        );
+      }
+
+      // Reset form fields
+      setFormData(
+        contactSectionData.form.fields.reduce(
+          (acc, field) => {
+            acc[field.name] = '';
+            return acc;
+          },
+          {} as Record<string, string>
+        )
+      );
     } catch {
-      toast.error(contactSectionData.form.errorMessage);
+      window.location.href = mailtoUrl;
+      toast.success(
+        'Opening your email app to send your message directly to Akash!'
+      );
     } finally {
       setIsLoading(false);
     }
@@ -86,7 +128,7 @@ export default function ContactSection() {
     >
       {/* Decorative Styling Separator */}
       <div className='container mx-auto flex flex-col gap-16'>
-        <div className='relative w-full rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 p-10 md:p-14 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] group'>
+        <div className='relative w-full rounded-3xl bg-bg-secondary/70 backdrop-blur-md border border-foreground/10 p-10 md:p-14 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-10 overflow-hidden shadow-xl group'>
           
           {/* Animated Background Gradients */}
           <div className='absolute -top-32 -left-32 w-64 h-64 bg-primary/20 rounded-full blur-[80px] group-hover:bg-primary/30 transition-colors duration-700 pointer-events-none'></div>
@@ -105,7 +147,7 @@ export default function ContactSection() {
           </div>
           
           <div className='z-10 shrink-0'>
-            <div className='w-20 h-20 rounded-full bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-sm shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:scale-110 group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.2)] transition-all duration-500'>
+            <div className='w-20 h-20 rounded-full bg-foreground/5 border border-foreground/10 flex items-center justify-center backdrop-blur-sm shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:scale-110 group-hover:border-primary/50 transition-all duration-500'>
               <svg className='w-8 h-8 text-primary animate-bounce mt-2' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2.5} d='M19 14l-7 7m0 0l-7-7m7 7V3' />
               </svg>

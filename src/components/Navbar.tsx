@@ -6,6 +6,7 @@ import { cn } from '@/utils';
 import { navLinks } from '@/data';
 import NavToggleButton from './NavToggleButton';
 import Divider from './Divider';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -90,10 +91,13 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <NavToggleButton
-          isMenuOpen={isMenuOpen}
-          toggleMenuOpen={() => setIsMenuOpen((prev) => !prev)}
-        />
+        <div className='flex items-center gap-3'>
+          <ThemeToggle />
+          <NavToggleButton
+            isMenuOpen={isMenuOpen}
+            toggleMenuOpen={() => setIsMenuOpen((prev) => !prev)}
+          />
+        </div>
 
         <div
           className={cn(

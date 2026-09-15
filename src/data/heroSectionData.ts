@@ -1,7 +1,7 @@
 export const heroSectionData = {
   id: 1,
   image: {
-    src: '/AI Generated Profile Picture-1.jpeg',
+    src: '/AI Generated Profile Picture-2.jpeg',
     alt: 'Akash Patil',
   },
   title: 'Hi, My name is',
@@ -14,7 +14,7 @@ export const heroSectionData = {
     },
     secondary: {
       label: 'View Resume',
-      href: 'https://drive.google.com/file/d/1pTsW88IIO_H6F9XyTw14vWLwvGycmelE/view?usp=drivesdk',
+      href: 'https://drive.google.com/file/d/1eFq0L-UXFjiPffi8y-6dt4-vAF0aHObz/view?usp=sharing',
       isExternal: true,
     },
   },

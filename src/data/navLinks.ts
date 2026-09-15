@@ -5,6 +5,6 @@ export const navLinks = [
     { name: 'Skills', href: '#skills', icon: CodeXml },
     { name: 'Projects', href: '#projects', icon: Layers2 },
     { name: 'Experience', href: '#experience', icon: Briefcase },
-    { name: 'Github', href: 'https://github.com/mgoyal98', icon: Github, isExternal: true },
+    { name: 'Github', href: 'https://github.com/akashpatilx7', icon: Github, isExternal: true },
     { name: 'Contact', href: '#contact', icon: Mail },
   ];

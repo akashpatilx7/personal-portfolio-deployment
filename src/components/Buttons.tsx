@@ -30,9 +30,9 @@ export default function Button({
     'py-4 px-8 rounded-full text-lg font-medium cursor-pointer transition-all duration-300 relative group/button border overflow-hidden',
     className,
     variant === 'primary' &&
-      'bg-primary text-background border-primary hover:text-primary',
+      'bg-primary text-background font-semibold border-primary hover:text-primary hover:shadow-[0_0_25px_var(--color-primary)]',
     variant === 'secondary' &&
-      'bg-transparent border-foreground/70 hover:border-primary hover:text-primary',
+      'bg-transparent text-foreground border-foreground/40 hover:border-primary hover:text-primary hover:bg-primary/5',
     'disabled:bg-primary/20 disabled:cursor-not-allowed disabled:text-background disabled:border-primary/20'
   );
 

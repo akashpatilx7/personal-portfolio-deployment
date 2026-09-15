@@ -13,7 +13,7 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <>
-      <div className='flex flex-col min-h-screen gap-20'>
+      <div className='flex flex-col min-h-screen gap-20 bg-background bg-grid-pattern text-foreground transition-colors duration-300'>
         <Navbar />
         <main className='flex-grow'>
           <HeroSection />
